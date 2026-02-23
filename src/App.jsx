@@ -23,9 +23,7 @@ function App() {
             <div>
               <Heading as="h1">Check in/out</Heading>
               <ButtonGroup>
-                <Button variation="primary" size="medium">
-                  Check in
-                </Button>
+                <Button>Check in</Button>
                 <Button variation="secondary" size="small">
                   Check out
                 </Button>
