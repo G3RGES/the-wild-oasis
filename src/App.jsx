@@ -14,9 +14,10 @@ function App() {
     <>
       <GlobalStyles />
       <StyledApp>
-        <Heading>Wild Oasis</Heading>
+        <Heading as="h1">Wild Oasis</Heading>
         <Button>Check in</Button>
         <Button>Check out</Button>
+        <Heading as="h2">Guests </Heading>
         <Input type="number" placeholder="Guests" />
       </StyledApp>
     </>
