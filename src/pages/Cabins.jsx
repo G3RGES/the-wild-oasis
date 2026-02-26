@@ -11,7 +11,7 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>TEST</p>
+        <p>Filter / Sort</p>
 
         {/* <img
         src="https://rnfhyxtxtbsuxjhirwrp.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg"
