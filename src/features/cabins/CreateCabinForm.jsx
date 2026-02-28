@@ -45,6 +45,7 @@ function CreateCabinForm() {
           type="text"
           id="name"
           {...register("name", { required: "This field is required" })}
+          disabled={isCreating}
         />
       </FormRow>
 
@@ -59,6 +60,7 @@ function CreateCabinForm() {
               message: "Capacity should be at least 1",
             },
           })}
+          disabled={isCreating}
         />
       </FormRow>
 
@@ -73,6 +75,7 @@ function CreateCabinForm() {
               message: "Price should be at least 100",
             },
           })}
+          disabled={isCreating}
         />
       </FormRow>
 
@@ -87,6 +90,7 @@ function CreateCabinForm() {
               +value <= +getValues().regularPrice ||
               "Discount should be less than regular price",
           })}
+          disabled={isCreating}
         />
       </FormRow>
 
@@ -96,11 +100,17 @@ function CreateCabinForm() {
           id="description"
           defaultValue=""
           {...register("description", { required: "This field is required" })}
+          disabled={isCreating}
         />
       </FormRow>
 
       <FormRow error={errors?.image?.message} label="Cabin image">
-        <FileInput id="image" accept="image/*" {...register("image")} />
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register("image")}
+          disabled={isCreating}
+        />
       </FormRow>
 
       <FormRow>
