@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
-import { formatCurrency } from "../../utils/helpers";
-
-import Button from "../../ui/Button";
 import { useState } from "react";
-import CreateCabinForm from "./CreateCabinForm";
 import { useDeleteCabin } from "./useDeleteCabin";
+
+import CreateCabinForm from "./CreateCabinForm";
+import Button from "../../ui/Button";
+
+import { formatCurrency } from "../../utils/helpers";
+import styled from "styled-components";
 
 const TableRow = styled.div`
   display: grid;
