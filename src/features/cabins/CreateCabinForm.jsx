@@ -37,6 +37,7 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
         {
           onSuccess: () => {
             reset();
+            //! TO BE DELETED WHEN FORM BECOMES A MODAL (POPUP)
             setShowForm(false);
           },
         },
@@ -47,6 +48,7 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
         {
           onSuccess: () => {
             reset();
+            //! TO BE DELETED WHEN FORM BECOMES A MODAL (POPUP)
             setShowForm(false);
           },
         },
