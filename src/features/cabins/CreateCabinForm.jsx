@@ -10,7 +10,7 @@ import FormRow from "../../ui/FormRow";
 import { useForm } from "react-hook-form";
 
 import { useCreateCabins } from "./useCreateCabin";
-import { useEditCabin } from "./useEditCabin";
+import { useUpdateCabin } from "./useUpdateCabin";
 
 function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
   const { id: editId, ...editValues } = cabinToEdit;
@@ -23,7 +23,7 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
   // console.log(errors);
 
   const { isCreating, createCabin } = useCreateCabins();
-  const { isEditting, editCabin } = useEditCabin();
+  const { isEditting, editCabin } = useUpdateCabin();
 
   const isWorking = isCreating || isEditting;
 
