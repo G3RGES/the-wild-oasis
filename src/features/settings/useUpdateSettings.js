@@ -7,7 +7,7 @@ export function useUpdateSettings() {
   const queryClient = useQueryClient();
 
   const { mutate: editSettings, isLoading: isUpdating } = useMutation({
-    mutationFn: ({ newSettingsData }) => updateSetting(newSettingsData),
+    mutationFn: updateSetting,
 
     onSuccess: () => {
       toast.success("Settings successfully updated");
@@ -16,7 +16,7 @@ export function useUpdateSettings() {
       //   setShowForm(false);
     },
     onError: (err) => {
-      toast.error("Cabin could not be created", err.message);
+      toast.error("Settings could not be updated", err.message);
     },
   });
 
