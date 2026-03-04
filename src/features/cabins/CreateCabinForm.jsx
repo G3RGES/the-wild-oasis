@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { useCreateCabins } from "./useCreateCabin";
 import { useUpdateCabin } from "./useUpdateCabin";
 
-function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -37,8 +37,7 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
         {
           onSuccess: () => {
             reset();
-            //! TO BE DELETED WHEN FORM BECOMES A MODAL (POPUP)
-            setShowForm(false);
+            onCloseModal?.();
           },
         },
       );
@@ -48,8 +47,7 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
         {
           onSuccess: () => {
             reset();
-            //! TO BE DELETED WHEN FORM BECOMES A MODAL (POPUP)
-            setShowForm(false);
+            onCloseModal?.();
           },
         },
       );
@@ -60,7 +58,10 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit, onError)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow error={errors?.name?.message} label="Cabin name">
         <Input
           type="text"
@@ -137,7 +138,11 @@ function CreateCabinForm({ cabinToEdit = {}, setShowForm }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
