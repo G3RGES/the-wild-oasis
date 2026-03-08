@@ -19,7 +19,7 @@ export function useBookings() {
         };
 
   //* SORT
-  const sortByRaw = searchParams.get("sortBy") || "startDate";
+  const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
 
