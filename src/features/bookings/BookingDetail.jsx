@@ -12,7 +12,7 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import { useNavigate } from "react-router-dom";
-import { HiArrowUpOnSquare } from "react-icons/hi2";
+
 import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 import Modal from "../../ui/Modal";
@@ -53,42 +53,38 @@ function BookingDetail() {
 
       <BookingDataBox booking={booking} />
 
-      <Modal>
-        <ButtonGroup>
-          {status === "unconfirmed" && (
-            <Button onClick={() => navigate(`/checkin/${bookingId}`)}>
-              Check-in
-            </Button>
-          )}
-          {status === "checked-in" && (
-            <Button
-              disabled={isCheckingOut}
-              icon={<HiArrowUpOnSquare />}
-              onClick={() => checkout(bookingId)}
-            >
-              Check-out
-            </Button>
-          )}
-
+      <ButtonGroup>
+        <Modal>
           <Modal.Open opens="delete">
-            <Button disabled={isDeleting}>Delete</Button>
+            <Button $variation="danger">Delete booking</Button>
           </Modal.Open>
 
-          <Button $variation="secondary" onClick={moveBack}>
-            Back
-          </Button>
-        </ButtonGroup>
+          <Modal.Window name="delete" id={bookingId}>
+            <ConfirmDelete
+              resourceName="booking"
+              onConfirm={() =>
+                deleteBooking(bookingId, { onSettled: () => moveBack() })
+              }
+              disabled={isDeleting}
+            />
+          </Modal.Window>
+        </Modal>
 
-        <Modal.Window name="delete" id={bookingId}>
-          <ConfirmDelete
-            resourceName="bookings"
-            onConfirm={() => {
-              deleteBooking(bookingId);
-              moveBack();
-            }}
-          />
-        </Modal.Window>
-      </Modal>
+        {status === "unconfirmed" && (
+          <Button onClick={() => navigate(`/checkin/${bookingId}`)}>
+            Check-in
+          </Button>
+        )}
+        {status === "checked-in" && (
+          <Button disabled={isCheckingOut} onClick={() => checkout(bookingId)}>
+            Check-out
+          </Button>
+        )}
+
+        <Button $variation="secondary" onClick={moveBack}>
+          Back
+        </Button>
+      </ButtonGroup>
     </>
   );
 }
