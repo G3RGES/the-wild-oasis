@@ -128,11 +128,7 @@ function BookingRow({
             )}
 
             <Modal.Open opens="delete">
-              <Menus.Button
-                name="delete"
-                disabled={isDeleting}
-                icon={<HiTrash />}
-              >
+              <Menus.Button name="delete" icon={<HiTrash />}>
                 Delete
               </Menus.Button>
             </Modal.Open>
@@ -141,8 +137,9 @@ function BookingRow({
 
         <Modal.Window name="delete" id={bookingId}>
           <ConfirmDelete
-            resourceName="bookings"
+            resourceName="booking"
             onConfirm={() => deleteBooking(bookingId)}
+            disabled={isDeleting}
           />
         </Modal.Window>
       </Modal>
