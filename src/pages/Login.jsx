@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LoginForm from "./../features/authentication/LoginForm";
 import Logo from "./../ui/Logo";
 import Heading from "./../ui/Heading";
+import { Link } from "react-router-dom";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -19,6 +20,9 @@ function Login() {
       <Logo />
       <Heading as="h4">Log in to your account </Heading>
       <LoginForm />
+      <span>
+        Don&apos;t have an account? <Link to="/signup">Sign up</Link>
+      </span>
     </LoginLayout>
   );
 }
